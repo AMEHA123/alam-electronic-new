@@ -850,3 +850,101 @@
 
     
 </script>
+</body><script>
+(() => {
+  const cart = [];
+  const cartButton = document.getElementById("cartButton");
+  const cartPanel = document.getElementById("cartPanel");
+  const closeCart = document.getElementById("closeCart");
+  const overlay = document.getElementById("overlay");
+  const cartItems = document.getElementById("cartItems");
+  const cartCount = document.getElementById("cartCount");
+  const cartTotal = document.getElementById("cartTotal");
+  const checkoutButton = document.getElementById("checkoutButton");
+
+  function formatPrice(price) {
+    return price.toLocaleString("ar-SA") + " ر.س";
+  }
+
+  function showCart() {
+    cartPanel.classList.add("open");
+    overlay.classList.add("show");
+  }
+
+  function hideCart() {
+    cartPanel.classList.remove("open");
+    overlay.classList.remove("show");
+  }
+
+  function renderCart() {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalPrice = cart.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+
+    cartCount.textContent = totalItems;
+    cartTotal.textContent = formatPrice(totalPrice);
+
+    if (cart.length === 0) {
+      cartItems.innerHTML = '<p class="empty-cart">السلة فارغة حاليًا.</p>';
+      return;
+    }
+
+    cartItems.innerHTML = cart.map((item, index) => `
+      <div class="cart-item">
+        <div>
+          <strong>${item.icon} ${item.name}</strong>
+          <small>${item.quantity} × ${formatPrice(item.price)}</small>
+        </div>
+        <button class="remove-button" data-remove="${index}">حذف</button>
+      </div>
+    `).join("");
+
+    document.querySelectorAll("[data-remove]").forEach((button) => {
+      button.addEventListener("click", () => {
+        cart.splice(Number(button.dataset.remove), 1);
+        renderCart();
+      });
+    });
+  }
+
+  document.querySelectorAll("#productsGrid .product-card").forEach((card) => {
+    const addButton = card.querySelector(".add-button");
+
+    addButton.addEventListener("click", () => {
+      const name = card.querySelector("h3").textContent.trim();
+      const icon = card.querySelector(".product-art").textContent.trim();
+      const priceText = card.querySelector(".price").textContent;
+      const price = Number(priceText.replace(/[^\d]/g, ""));
+
+      const existingProduct = cart.find((item) => item.name === name);
+
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push({ name, icon, price, quantity: 1 });
+      }
+
+      renderCart();
+      showCart();
+    });
+  });
+
+  cartButton.addEventListener("click", showCart);
+  closeCart.addEventListener("click", hideCart);
+  overlay.addEventListener("click", hideCart);
+
+  checkoutButton.addEventListener("click", () => {
+    if (cart.length === 0) {
+      alert("السلة فارغة. أضف منتجًا أولًا.");
+      return;
+    }
+
+    alert("شكرًا لك! هذا متجر تجريبي، ولا يتم تنفيذ دفع حقيقي.");
+  });
+
+  renderCart();
+})();
+</script>
+</html>
