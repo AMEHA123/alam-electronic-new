@@ -1,954 +1,264 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="عالم إلكترونيك - متجر عربي للأجهزة والإكسسوارات" />
-  <title>عالم إلكترونيك | متجر التقنية</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-</style>    :root {
-      --dark: #10182b;
-      --blue: #2563eb;
-      --blue-dark: #1d4ed8;
-      --light: #f5f7fb;
-      --white: #ffffff;
-      --text: #1e293b;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --success: #16a34a;
-      --shadow: 0 14px 35px rgba(15, 23, 42, 0.10);
-    }
+  <title>عالم إلكترونيك | متجر الإلكترونيات</title>
+  <meta name="description" content="عالم إلكترونيك - اكتشف الهواتف واللابتوبات والسماعات والإكسسوارات بأفضل الخيارات.">
+  <meta name="theme-color" content="#2563eb">
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--light);
-      color: var(--text);
-      font-family: Tahoma, Arial, sans-serif;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-      border: 0;
-    }
-
-    .container {
-      width: min(1120px, 92%);
-      margin: auto;
-    }
-
-    .announcement {
-      padding: 10px;
-      text-align: center;
-      color: white;
-      background: var(--dark);
-      font-size: 14px;
-    }
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.95);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .brand {
-      color: var(--dark);
-      font-size: 22px;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .brand span {
-      color: var(--blue);
-    }
-
-    nav {
-      display: flex;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    nav a:hover {
-      color: var(--blue);
-    }
-
-    .cart-button {
-      padding: 10px 14px;
-      color: white;
-      background: var(--blue);
-      border-radius: 10px;
-      font-weight: bold;
-    }
-
-    .hero {
-      padding: 78px 0 58px;
-      color: white;
-      background:
-        radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.34), transparent 28%),
-        linear-gradient(135deg, #0f172a, #1d4ed8);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: center;
-      gap: 40px;
-    }
-
-    .eyebrow {
-      margin: 0 0 12px;
-      color: #93c5fd;
-      font-weight: bold;
-      font-size: 15px;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 620px;
-      font-size: clamp(32px, 5vw, 54px);
-      line-height: 1.25;
-    }
-
-    .hero-text {
-      max-width: 570px;
-      margin: 20px 0 28px;
-      color: #dbeafe;
-      line-height: 1.9;
-      font-size: 17px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .primary-btn,
-    .secondary-btn {
-      display: inline-block;
-      padding: 13px 20px;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-
-    .primary-btn {
-      color: white;
-      background: var(--blue);
-    }
-
-    .primary-btn:hover {
-      background: var(--blue-dark);
-    }
-
-    .secondary-btn {
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-    }
-
-    .hero-icons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .hero-icon {
-      padding: 28px 16px;
-      text-align: center;
-      font-size: 52px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 22px;
-    }
-
-    .section {
-      padding: 65px 0;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 26px;
-    }
-
-    .section-heading .eyebrow {
-      color: var(--blue);
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 29px;
-      color: var(--dark);
-    }
-
-    .search {
-      width: min(300px, 100%);
-      padding: 11px 14px;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-    }
-
-    .search input {
-      width: 100%;
-      border: 0;
-      outline: 0;
-    }
-
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-bottom: 42px;
-    }
-
-    .category-card {
-      padding: 18px 12px;
-      color: var(--text);
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      transition: 0.2s;
-    }
-
-    .category-card:hover,
-    .category-card.active {
-      color: var(--blue);
-      border-color: var(--blue);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
-
-    .category-card span {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 29px;
-    }
-
-    .category-card strong,
-    .category-card small {
-      display: block;
-    }
-
-    .category-card small {
-      margin-top: 6px;
-      color: var(--muted);
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .product-card {
-      overflow: hidden;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
-      transition: 0.2s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .product-art {
-      min-height: 160px;
-      display: grid;
-      place-items: center;
-      font-size: 70px;
-      background: linear-gradient(135deg, #dbeafe, #eff6ff);
-    }
-
-    .product-info {
-      padding: 17px;
-    }
-
-    .product-info small {
-      color: var(--blue);
-      font-weight: bold;
-    }
-
-    .product-info h3 {
-      min-height: 48px;
-      margin: 9px 0;
-      line-height: 1.5;
-      font-size: 17px;
-    }
-
-    .product-info p {
-      min-height: 42px;
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .product-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .price {
-      color: var(--dark);
-      font-weight: 800;
-    }
-
-    .add-button {
-      padding: 9px 11px;
-      color: white;
-      background: var(--dark);
-      border-radius: 8px;
-      font-size: 13px;
-    }
-
-    .add-button:hover {
-      background: var(--blue);
-    }
-
-    .features {
-      padding: 42px 0;
-      color: white;
-      background: var(--dark);
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      text-align: center;
-    }
-
-    .feature {
-      padding: 10px;
-    }
-
-    .feature span {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 32px;
-    }
-
-    .feature p {
-      margin: 7px 0 0;
-      color: #cbd5e1;
-      font-size: 14px;
-    }
-
-    footer {
-      padding: 28px 0;
-      text-align: center;
-      color: #94a3b8;
-      background: #0b1120;
-    }
-
-    .cart-panel {
-      position: fixed;
-      z-index: 50;
-      top: 0;
-      left: -390px;
-      width: min(385px, 92vw);
-      height: 100vh;
-      padding: 22px;
-      overflow-y: auto;
-      background: white;
-      box-shadow: 8px 0 30px rgba(15, 23, 42, 0.22);
-      transition: 0.3s;
-    }
-
-    .cart-panel.open {
-      left: 0;
-    }
-
-    .cart-head,
-    .cart-total {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .close-cart {
-      width: 35px;
-      height: 35px;
-      color: var(--dark);
-      background: #e2e8f0;
-      border-radius: 50%;
-      font-size: 21px;
-    }
-
-    .cart-item {
-      padding: 13px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .cart-item strong,
-    .cart-item small {
-      display: block;
-    }
-
-    .cart-item small {
-      margin-top: 4px;
-      color: var(--muted);
-    }
-
-    .remove-button {
-      padding: 7px 9px;
-      color: #dc2626;
-      background: #fee2e2;
-      border-radius: 7px;
-    }
-
-    .empty-cart {
-      padding: 35px 0;
-      text-align: center;
-      color: var(--muted);
-    }
-
-    .cart-total {
-      margin-top: 20px;
-      padding-top: 18px;
-      border-top: 2px solid var(--border);
-      font-size: 18px;
-    }
-
-    .checkout {
-      width: 100%;
-      margin-top: 18px;
-      padding: 13px;
-      color: white;
-      background: var(--success);
-      border-radius: 10px;
-      font-weight: bold;
-    }
-
-    .overlay {
-      position: fixed;
-      z-index: 40;
-      inset: 0;
-      display: none;
-      background: rgba(15, 23, 42, 0.5);
-    }
-
-    .overlay.show {
-      display: block;
-    }
-
-    @media (max-width: 850px) {
-      nav {
-        display: none;
-      }
-
-      .hero-grid,
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hero-grid > div:first-child {
-        grid-column: 1 / -1;
-      }
-
-      .categories {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 560px) {
-      .nav {
-        min-height: 62px;
-      }
-
-      .brand {
-        font-size: 18px;
-      }
-
-      .hero {
-        padding-top: 50px;
-      }
-
-      .hero-icons {
-        display: none;
-      }
-
-      .section-heading {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .products,
-      .categories,
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .product-art {
-        min-height: 130px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="announcement">🚚 شحن مجاني للطلبات فوق 500 ر.س — متجر تجريبي</div>
 
+  <!-- الشريط العلوي -->
+  <div class="announcement">
+    🚚 شحن مجاني للطلبات فوق 50,000 دج — متجر عالم إلكترونيك
+  </div>
+
+  <!-- الرأس -->
   <header class="header">
     <div class="container nav">
-      <a class="brand" href="#home">عالم <span>إلكترونيك</span></a>
+
+      <a href="#home" class="brand">
+        عالم <span>إلكترونيك</span>
+      </a>
 
       <nav>
         <a href="#home">الرئيسية</a>
         <a href="#categories">الأقسام</a>
         <a href="#products">المنتجات</a>
-        <a href="#contact">تواصل</a>
+        <a href="#contact">تواصل معنا</a>
       </nav>
 
-      <button class="cart-button" id="cartButton">🛒 السلة (<span id="cartCount">0</span>)</button>
+      <button class="cart-button" id="openCart">
+        🛒 السلة
+        <span id="cartCount">0</span>
+      </button>
+
     </div>
   </header>
 
-  <main id="home">
-    <section class="hero">
+  <!-- الرئيسية -->
+  <main>
+
+    <section class="hero" id="home">
       <div class="container hero-grid">
+
         <div>
           <p class="eyebrow">تقنية أفضل، اختيار أذكى</p>
-          <h1>كل ما تحتاجه من عالم الإلكترونيات</h1>
+
+          <h1>
+            كل ما تحتاجه من عالم الإلكترونيات
+          </h1>
+
           <p class="hero-text">
-            متجر عربي بسيط لاستكشاف الهواتف واللابتوبات والسماعات والإكسسوارات.
+            اكتشف مجموعة مختارة من الهواتف واللابتوبات والسماعات
+            والإكسسوارات التقنية بتصميم بسيط وسهل الاستخدام.
           </p>
+
           <div class="hero-actions">
-            <a class="primary-btn" href="#products">تسوّق الآن</a>
-            <a class="secondary-btn" href="#categories">استكشف الأقسام</a>
+            <a href="#products" class="primary-btn">
+              تسوق الآن
+            </a>
+
+            <a href="#categories" class="secondary-btn">
+              استكشف الأقسام
+            </a>
           </div>
         </div>
 
-        <div class="hero-icons" aria-hidden="true">
+        <div class="hero-icons">
           <div class="hero-icon">📱</div>
           <div class="hero-icon">💻</div>
           <div class="hero-icon">🎧</div>
           <div class="hero-icon">⌚</div>
         </div>
+
       </div>
     </section>
 
+    <!-- الأقسام -->
     <section class="section" id="categories">
       <div class="container">
+
         <div class="section-heading">
           <div>
             <p class="eyebrow">تصفح بسهولة</p>
-            <h2>تسوّق حسب القسم</h2>
+            <h2>تسوق حسب القسم</h2>
           </div>
         </div>
 
         <div class="categories">
-          <button class="category-card active" data-filter="all">
+
+          <button class="category-card active" data-category="all">
             <span>✨</span>
             <strong>كل المنتجات</strong>
-            <small>جميع العروض</small>
+            <small>جميع المنتجات</small>
           </button>
 
-          <button class="category-card" data-filter="phones">
+          <button class="category-card" data-category="phones">
             <span>📱</span>
             <strong>الهواتف</strong>
             <small>أجهزة ذكية</small>
           </button>
 
-          <button class="category-card" data-filter="laptops">
+          <button class="category-card" data-category="laptops">
             <span>💻</span>
             <strong>اللابتوبات</strong>
             <small>عمل ودراسة</small>
           </button>
 
-          <button class="category-card" data-filter="audio">
+          <button class="category-card" data-category="audio">
             <span>🎧</span>
             <strong>الصوتيات</strong>
             <small>سماعات ومكبرات</small>
           </button>
+
+          <button class="category-card" data-category="accessories">
+            <span>🔌</span>
+            <strong>الإكسسوارات</strong>
+            <small>شواحن وكابلات</small>
+          </button>
+
+          <button class="category-card" data-category="watches">
+            <span>⌚</span>
+            <strong>الساعات</strong>
+            <small>ساعات ذكية</small>
+          </button>
+
         </div>
+
       </div>
     </section>
 
-    <section class="section" id="products">
+    <!-- المنتجات -->
+    <section class="section products-section" id="products">
       <div class="container">
+
         <div class="section-heading">
+
           <div>
             <p class="eyebrow">منتجات مختارة</p>
-            <h2>الأكثر طلبًا</h2>
+            <h2>أحدث المنتجات</h2>
           </div>
 
-          <label class="search">
-            <span>⌕</span>
-            <input id="searchInput" type="search" placeholder="ابحث عن منتج..." />
-          </label>
+          <div class="search">
+            🔍
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="ابحث عن منتج..."
+              aria-label="البحث عن منتج"
+            >
+          </div>
+
         </div>
-<div class="products" id="productsGrid">
-  <article class="product-card">
-<div class="product-art">
-  <img
-    src="https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/1279fb2a-1c4b-5ca4-ac0d-9f370abd5b24/4cbaa4b4-65d2-5a5f-bfb2-2f048ee18613.jpg"
-    alt="هاتف Galaxy S26 Ultra"
-    class="product-image"
-  >
-</div>    <div class="product-info">
-      <small>هواتف</small>
-      <h3>هاتف Galaxy S26 Ultra</h3>
-      <p>هاتف قوي بكاميرا متقدمة وشاشة عالية الدقة.</p>
-      <div class="product-bottom">
-        <span class="price">4,999 ر.س</span>
-        <button class="add-button">أضف للسلة</button>
-      </div>
-    </div>
-  </article>
 
-  <article class="product-card">
-    <div class="product-art">💻</div>
-    <div class="product-info">
-      <small>لابتوبات</small>
-      <h3>لابتوب للعمل والدراسة</h3>
-      <p>أداء ممتاز وبطارية مناسبة للعمل والدراسة.</p>
-      <div class="product-bottom">
-        <span class="price">3,299 ر.س</span>
-        <button class="add-button">أضف للسلة</button>
-      </div>
-    </div>
-  </article>
+        <div class="products" id="productsContainer"></div>
 
-  <article class="product-card">
-    <div class="product-art">🎧</div>
-    <div class="product-info">
-      <small>صوتيات</small>
-      <h3>سماعات لاسلكية</h3>
-      <p>صوت نقي وبطارية تدوم طوال اليوم.</p>
-      <div class="product-bottom">
-        <span class="price">399 ر.س</span>
-        <button class="add-button">أضف للسلة</button>
-      </div>
-    </div>
-  </article>
-</div>
+        <div class="no-results" id="noResults">
+          لا توجد منتجات مطابقة لبحثك.
+        </div>
+
       </div>
     </section>
 
+    <!-- المميزات -->
     <section class="features">
       <div class="container features-grid">
+
         <div class="feature">
           <span>🔒</span>
-          <strong>دفع آمن</strong>
-          <p>هذا نموذج متجر تجريبي</p>
+          <h3>دفع آمن</h3>
+          <p>نموذج متجر إلكتروني آمن وسهل الاستخدام.</p>
         </div>
 
         <div class="feature">
           <span>🚚</span>
-          <strong>توصيل سريع</strong>
-          <p>متابعة سهلة للطلبات</p>
+          <h3>توصيل سريع</h3>
+          <p>متابعة سهلة للطلبات والتوصيل.</p>
         </div>
 
         <div class="feature">
           <span>💬</span>
-          <strong>دعم العملاء</strong>
-          <p>نجيب عن استفساراتك</p>
+          <h3>دعم العملاء</h3>
+          <p>تواصل معنا للحصول على المساعدة.</p>
         </div>
+
       </div>
     </section>
+
+    <!-- تواصل معنا -->
+    <section class="section contact-section" id="contact">
+      <div class="container contact-box">
+
+        <div>
+          <p class="eyebrow">نحن هنا لمساعدتك</p>
+          <h2>تواصل مع عالم إلكترونيك</h2>
+          <p>
+            هل لديك سؤال حول أحد المنتجات؟ يمكنك التواصل معنا مباشرة.
+          </p>
+        </div>
+
+        <a
+          href="https://wa.me/213000000000"
+          class="whatsapp-btn"
+          target="_blank"
+          rel="noopener"
+        >
+          💬 تواصل عبر واتساب
+        </a>
+
+      </div>
+    </section>
+
   </main>
 
+  <!-- السلة -->
+  <div class="overlay" id="overlay"></div>
+
   <aside class="cart-panel" id="cartPanel">
+
     <div class="cart-head">
-      <h2>سلة التسوق</h2>
-      <button class="close-cart" id="closeCart">×</button>
+      <h2>🛒 سلة التسوق</h2>
+
+      <button class="close-cart" id="closeCart">
+        ×
+      </button>
     </div>
 
     <div id="cartItems"></div>
 
-    <div class="cart-total">
-      <span>الإجمالي</span>
-      <strong id="cartTotal">0 ر.س</strong>
+    <div class="empty-cart" id="emptyCart">
+      السلة فارغة حاليًا.
     </div>
 
-    <button class="checkout" id="checkoutButton">إتمام الطلب</button>
+    <div class="cart-total">
+      <strong>الإجمالي</strong>
+      <strong id="cartTotal">0 دج</strong>
+    </div>
+
+    <button class="checkout" id="checkout">
+      إتمام الطلب عبر واتساب
+    </button>
+
   </aside>
 
-  <div class="overlay" id="overlay"></div>
-
-  <footer id="contact">
+  <!-- التذييل -->
+  <footer>
     <div class="container">
       <strong>عالم إلكترونيك</strong>
-      <p>© 2026 — مشروع متجر إلكتروني عربي تجريبي</p>
+      <p>
+        © <span id="year"></span> جميع الحقوق محفوظة.
+      </p>
     </div>
   </footer>
 
-  <script>
-    const products = [
-      {
-        id: 1,
-        name: "هاتف Galaxy S26 Ultra",
-        category: "phones",
-        icon: "📱",
-        price: 4999,
-        description: "هاتف قوي بكاميرا متقدمة وشاشة عالية الدقة."
-      },
-      {
-        id: 2,
-        name: "هاتف iPhone Pro",
-        category: "phones",
-        icon: "📲",
-        price: 4599,
-        description: "تصميم أنيق وأداء سريع للاستخدام اليومي."
-      },
-      {
-        id: 3,
-        name: "لابتوب للعمل والدراسة",
-        category: "laptops",
-        icon: "💻",
-        price: 3299,
-        description: "أداء ممتاز وبطارية مناسبة للعمل والدراسة."
-      },
-      {
-        id: 4,
-        name: "لابتوب ألعاب احترافي",
-        category: "laptops",
-        icon: "🖥️",
-        price: 5899,
-        description: "معالج قوي ورسوميات عالية للألعاب والتصميم."
-      },
-      {
-        id: 5,
-        name: "سماعات لاسلكية",
-        category: "audio",
-        icon: "🎧",
-        price: 399,
-        description: "صوت نقي وبطارية تدوم طوال اليوم."
-      },
-      {
-        id: 6,
-        name: "مكبر صوت محمول",
-        category: "audio",
-        icon: "🔊",
-        price: 279,
-        description: "صوت قوي وتصميم مناسب للرحلات."
-      }
-    ];
+  <script src="script.js"></script>
 
-    let selectedCategory = "all";
-    let cart = [];
-
-    const productsGrid = document.getElementById("productsGrid");
-    const searchInput = document.getElementById("searchInput");
-    const cartButton = document.getElementById("cartButton");
-    const cartPanel = document.getElementById("cartPanel");
-    const closeCart = document.getElementById("closeCart");
-    const overlay = document.getElementById("overlay");
-    const cartItems = document.getElementById("cartItems");
-    const cartCount = document.getElementById("cartCount");
-    const cartTotal = document.getElementById("cartTotal");
-    const checkoutButton = document.getElementById("checkoutButton");
-
-    function formatPrice(price) {
-      return price.toLocaleString("ar-SA") + " ر.س";
-    }
-
-    function renderProducts() {
-      const query = searchInput.value.trim().toLowerCase();
-
-      const filteredProducts = products.filter((product) => {
-        const matchesCategory =
-          selectedCategory === "all" || product.category === selectedCategory;
-
-        const matchesSearch =
-          product.name.toLowerCase().includes(query) ||
-          product.description.toLowerCase().includes(query);
-
-        return matchesCategory && matchesSearch;
-      });
-
-      if (filteredProducts.length === 0) {
-        productsGrid.innerHTML = "<p>لا توجد منتجات مطابقة لبحثك.</p>";
-        return;
-      }
-
-      productsGrid.innerHTML
 </body>
-</html><script>
-  const grid = document.getElementById("productsGrid");
-
-  grid.innerHTML = `
-    <article class="product-card">
-      <div class="product-art">📱</div>
-      <div class="product-info">
-        <small>هواتف</small>
-        <h3>هاتف Galaxy S26 Ultra</h3>
-        <p>هاتف قوي بكاميرا متقدمة وشاشة عالية الدقة.</p>
-        <div class="product-bottom">
-          <span class="price">4,999 ر.س</span>
-          <button class="add-button">أضف للسلة</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="product-art">💻</div>
-      <div class="product-info">
-        <small>لابتوبات</small>
-        <h3>لابتوب للعمل والدراسة</h3>
-        <p>أداء ممتاز وبطارية مناسبة للعمل والدراسة.</p>
-        <div class="product-bottom">
-          <span class="price">3,299 ر.س</span>
-          <button class="add-button">أضف للسلة</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="product-art">🎧</div>
-      <div class="product-info">
-        <small>صوتيات</small>
-        <h3>سماعات لاسلكية</h3>
-        <p>صوت نقي وبطارية تدوم طوال اليوم.</p>
-        <div class="product-bottom">
-          <span class="price">399 ر.س</span>
-          <button class="add-button">أضف للسلة</button>
-        </div>
-      </div>
-    </article>
-
-    
-</script>
-</body><script>
-(() => {
-  const cart = [];
-  const cartButton = document.getElementById("cartButton");
-  const cartPanel = document.getElementById("cartPanel");
-  const closeCart = document.getElementById("closeCart");
-  const overlay = document.getElementById("overlay");
-  const cartItems = document.getElementById("cartItems");
-  const cartCount = document.getElementById("cartCount");
-  const cartTotal = document.getElementById("cartTotal");
-  const checkoutButton = document.getElementById("checkoutButton");
-
-  function formatPrice(price) {
-    return price.toLocaleString("ar-SA") + " ر.س";
-  }
-
-  function showCart() {
-    cartPanel.classList.add("open");
-    overlay.classList.add("show");
-  }
-
-  function hideCart() {
-    cartPanel.classList.remove("open");
-    overlay.classList.remove("show");
-  }
-
-  function renderCart() {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = cart.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
-
-    cartCount.textContent = totalItems;
-    cartTotal.textContent = formatPrice(totalPrice);
-
-    if (cart.length === 0) {
-      cartItems.innerHTML = '<p class="empty-cart">السلة فارغة حاليًا.</p>';
-      return;
-    }
-
-    cartItems.innerHTML = cart.map((item, index) => `
-      <div class="cart-item">
-        <div>
-          <strong>${item.icon} ${item.name}</strong>
-          <small>${item.quantity} × ${formatPrice(item.price)}</small>
-        </div>
-        <button class="remove-button" data-remove="${index}">حذف</button>
-      </div>
-    `).join("");
-
-    document.querySelectorAll("[data-remove]").forEach((button) => {
-      button.addEventListener("click", () => {
-        cart.splice(Number(button.dataset.remove), 1);
-        renderCart();
-      });
-    });
-  }
-
-  document.querySelectorAll("#productsGrid .product-card").forEach((card) => {
-    const addButton = card.querySelector(".add-button");
-
-    addButton.addEventListener("click", () => {
-      const name = card.querySelector("h3").textContent.trim();
-      const icon = card.querySelector(".product-art").textContent.trim();
-      const priceText = card.querySelector(".price").textContent;
-      const price = Number(priceText.replace(/[^\d]/g, ""));
-
-      const existingProduct = cart.find((item) => item.name === name);
-
-      if (existingProduct) {
-        existingProduct.quantity += 1;
-      } else {
-        cart.push({ name, icon, price, quantity: 1 });
-      }
-
-      renderCart();
-      showCart();
-    });
-  });
-
-  cartButton.addEventListener("click", showCart);
-  closeCart.addEventListener("click", hideCart);
-  overlay.addEventListener("click", hideCart);
-
-  checkoutButton.addEventListener("click", () => {
-    if (cart.length === 0) {
-      alert("السلة فارغة. أضف منتجًا أولًا.");
-      return;
-    }
-
-    alert("شكرًا لك! هذا متجر تجريبي، ولا يتم تنفيذ دفع حقيقي.");
-  });
-
-  renderCart();
-})();
-</script>
 </html>
