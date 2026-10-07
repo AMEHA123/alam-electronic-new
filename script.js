@@ -42,8 +42,7 @@ const products = [
 ];
 
 let selectedCategory = "all";
-let cart = [];
-
+let cart = JSON.parse(localStorage.getItem("alamCart") || "[]");
 const productsContainer = document.getElementById("productsContainer");
 const noResults = document.getElementById("noResults");
 const searchInput = document.getElementById("searchInput");
@@ -145,7 +144,7 @@ function addToCart(productId) {
   openCartPanel();
 }
 
-function renderCart() {
+function renderCart() {  localStorage.setItem("alamCart", JSON.stringify(cart));
   const totalItems = cart.reduce(
     (sum, item) => sum + item.quantity,
     0
