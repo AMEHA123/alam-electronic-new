@@ -95,7 +95,9 @@ function renderProducts() {
     const card = document.createElement("article");
 
     card.className = "product-card";
-
+// بقية كود المنتج هنا
+  });
+}
     card.innerHTML = `
       <div class="product-art">${product.icon}</div>
 
