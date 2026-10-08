@@ -86,7 +86,7 @@ function renderProducts() {
     return categoryMatch && searchMatch;
   });
 
-  productsContainer.innerHTML = "";
+    productsContainer.innerHTML = "";
 
   noResults.style.display =
     filteredProducts.length === 0 ? "block" : "none";
@@ -95,9 +95,7 @@ function renderProducts() {
     const card = document.createElement("article");
 
     card.className = "product-card";
-// بقية كود المنتج هنا
-  });
-}
+
     card.innerHTML = `
       <div class="product-art">${product.icon}</div>
 
@@ -108,6 +106,7 @@ function renderProducts() {
 
         <div class="product-bottom">
           <span class="price">${formatPrice(product.price)}</span>
+
           <button class="add-button" data-id="${product.id}">
             أضف للسلة
           </button>
@@ -124,7 +123,6 @@ function renderProducts() {
     });
   });
 }
-
 function addToCart(productId) {
   const product = products.find((item) => item.id === productId);
 
