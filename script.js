@@ -204,4 +204,17 @@ function closeCartPanel() {
 }
 
 document.querySelectorAll(".category-card").forEach((button) => {
-  button.addEventListener("click",
+  button.addEventListener("click", () => {
+    selectedCategory = button.dataset.category || "all";
+    renderProducts();
+  });
+});
+
+searchInput.addEventListener("input", renderProducts);
+
+document.getElementById("cartButton").addEventListener("click", openCartPanel);
+document.getElementById("closeCart").addEventListener("click", closeCartPanel);
+overlay.addEventListener("click", closeCartPanel);
+
+renderProducts();
+renderCart();
