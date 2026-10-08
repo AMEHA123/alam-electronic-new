@@ -1,3 +1,4 @@
+
 const products = [
   {
     id: 1,
@@ -139,7 +140,8 @@ function addToCart(productId) {
       quantity: 1
     });
   }
-localStorage.setItem("alamCart", JSON.stringify(cart));
+
+  localStorage.setItem("alamCart", JSON.stringify(cart));
   renderCart();
   openCartPanel();
 }
@@ -174,7 +176,7 @@ function renderCart() {
         <small>${item.quantity} × ${formatPrice(item.price)}</small>
       </div>
 
-            <button class="remove-button" data-id="${item.id}">
+      <button class="remove-button" data-id="${item.id}">
         حذف
       </button>
     `;
@@ -185,15 +187,13 @@ function renderCart() {
   document.querySelectorAll(".remove-button").forEach((button) => {
     button.addEventListener("click", () => {
       const productId = Number(button.dataset.id);
-
       cart = cart.filter((item) => item.id !== productId);
-
       localStorage.setItem("alamCart", JSON.stringify(cart));
-
       renderCart();
     });
   });
 }
+
 function openCartPanel() {
   cartPanel.classList.add("open");
   overlay.classList.add("show");
