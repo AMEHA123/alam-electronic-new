@@ -43,7 +43,8 @@ const products = [
 ];
 
 let selectedCategory = "all";
-let cart = JSON.parse(localStorage.getItem("alamCart") || "[]");
+let cart = [];
+
 const productsContainer = document.getElementById("productsContainer");
 const noResults = document.getElementById("noResults");
 const searchInput = document.getElementById("searchInput");
@@ -53,6 +54,17 @@ const emptyCart = document.getElementById("emptyCart");
 const cartTotal = document.getElementById("cartTotal");
 const cartPanel = document.getElementById("cartPanel");
 const overlay = document.getElementById("overlay");
+
+// ✅ تحميل السلة من localStorage بشكل صحيح
+function loadCart() {
+  const savedCart = localStorage.getItem("alamCart");
+  cart = savedCart ? JSON.parse(savedCart) : [];
+  return cart;
+}
+
+function saveCart() {
+  localStorage.setItem("alamCart", JSON.stringify(cart));
+}
 
 function formatPrice(price) {
   return price.toLocaleString("fr-FR") + " دج";
@@ -86,7 +98,7 @@ function renderProducts() {
     return categoryMatch && searchMatch;
   });
 
-    productsContainer.innerHTML = "";
+  productsContainer.innerHTML = "";
 
   noResults.style.display =
     filteredProducts.length === 0 ? "block" : "none";
@@ -106,7 +118,6 @@ function renderProducts() {
 
         <div class="product-bottom">
           <span class="price">${formatPrice(product.price)}</span>
-
           <button class="add-button" data-id="${product.id}">
             أضف للسلة
           </button>
@@ -117,12 +128,17 @@ function renderProducts() {
     productsContainer.appendChild(card);
   });
 
+  attachAddToCartListeners();
+}
+
+function attachAddToCartListeners() {
   document.querySelectorAll(".add-button").forEach((button) => {
     button.addEventListener("click", () => {
       addToCart(Number(button.dataset.id));
     });
   });
 }
+
 function addToCart(productId) {
   const product = products.find((item) => item.id === productId);
 
@@ -141,7 +157,7 @@ function addToCart(productId) {
     });
   }
 
-  localStorage.setItem("alamCart", JSON.stringify(cart));
+  saveCart();
   renderCart();
   openCartPanel();
 }
@@ -184,11 +200,22 @@ function renderCart() {
     cartItems.appendChild(row);
   });
 
+  // ✅ إعادة إرفاق المستمعات بعد تحديث DOM
+  attachRemoveListeners();
+}
+
+function attachRemoveListeners() {
   document.querySelectorAll(".remove-button").forEach((button) => {
     button.addEventListener("click", () => {
       const productId = Number(button.dataset.id);
+      
+      // ✅ حذف المنتج من السلة
       cart = cart.filter((item) => item.id !== productId);
-      localStorage.setItem("alamCart", JSON.stringify(cart));
+      
+      // ✅ حفظ التغييرات في localStorage
+      saveCart();
+      
+      // ✅ تحديث الواجهة
       renderCart();
     });
   });
@@ -204,6 +231,7 @@ function closeCartPanel() {
   overlay.classList.remove("show");
 }
 
+// ✅ إرفاق المستمعات للفئات
 document.querySelectorAll(".category-card").forEach((button) => {
   button.addEventListener("click", () => {
     selectedCategory = button.dataset.category || "all";
@@ -211,11 +239,13 @@ document.querySelectorAll(".category-card").forEach((button) => {
   });
 });
 
+// المستمعات للبحث وتبديل السلة
 searchInput.addEventListener("input", renderProducts);
-
 document.getElementById("cartButton").addEventListener("click", openCartPanel);
 document.getElementById("closeCart").addEventListener("click", closeCartPanel);
 overlay.addEventListener("click", closeCartPanel);
 
+// ✅ تحميل السلة المحفوظة عند التحديث
+loadCart();
 renderProducts();
 renderCart();
