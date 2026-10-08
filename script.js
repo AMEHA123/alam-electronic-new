@@ -174,7 +174,7 @@ function renderCart() {
         <small>${item.quantity} × ${formatPrice(item.price)}</small>
       </div>
 
-      <button class="remove-button" data-id="${item.id}">
+            <button class="remove-button" data-id="${item.id}">
         حذف
       </button>
     `;
@@ -188,11 +188,12 @@ function renderCart() {
 
       cart = cart.filter((item) => item.id !== productId);
 
+      localStorage.setItem("alamCart", JSON.stringify(cart));
+
       renderCart();
     });
   });
 }
-
 function openCartPanel() {
   cartPanel.classList.add("open");
   overlay.classList.add("show");
