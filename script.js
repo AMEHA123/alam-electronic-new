@@ -139,12 +139,12 @@ function addToCart(productId) {
       quantity: 1
     });
   }
-
+localStorage.setItem("alamCart", JSON.stringify(cart));
   renderCart();
   openCartPanel();
 }
 
-function renderCart() {  localStorage.setItem("alamCart", JSON.stringify(cart));
+function renderCart() {
   const totalItems = cart.reduce(
     (sum, item) => sum + item.quantity,
     0
